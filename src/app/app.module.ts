@@ -7,13 +7,15 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     CreateAccountComponent,
-    DashboardComponent
+    DashboardComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
