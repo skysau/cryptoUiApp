@@ -7,10 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  isCollapsed = true;
   constructor(private router:Router){
 
   }
   onLogOut(){
     this.router.navigateByUrl('/log-in');
+  }
+  collaspse(){
+    this.isCollapsed=!this.isCollapsed
   }
 }

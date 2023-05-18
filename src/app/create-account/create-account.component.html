@@ -4,7 +4,7 @@
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
             <h3>Welcome</h3>
             <p>You are 30 seconds away from earning your own money!</p>
-            <input type="submit" name="" value="Login"/><br/>
+            <input type="submit" name="" (click)="onClickLogin()" value="Login"/><br/>
         </div>
         <div class="col-md-9 register-right">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
@@ -28,6 +28,9 @@
                             </div>
                             <div class="form-group mb-3">
                                 <input  type="email" id="email" formControlName="email" placeholder="Email Id *" value="" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <input  type="age" id="age" formControlName="age" placeholder="Age *" value="" />
                             </div>
                             <div class="form-group mb-3">
                                 <input  type="password" id="password" formControlName="password"  placeholder="Password *" value="" />
@@ -54,6 +57,9 @@
                             </div>
                             <div class="form-group mb-3">
                                 <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" id="Address" formControlName="Address" placeholder="Address *" value="" />
+                            </div>
+                            <div class="form-group mb-3">
+                                <input  type="targetInvestment" id="targetInvestment" formControlName="targetInvestment" placeholder="Target Investment" value="" />
                             </div>
                             <div class="form-group mb-3">
                                 <input type="text" id="password" formControlName="confirmpassword" placeholder="Confirm PassWord *" value="" />

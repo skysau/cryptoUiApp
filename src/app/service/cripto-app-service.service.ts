@@ -12,32 +12,32 @@ httpHeaders=new HttpHeaders().set('Content-Type','application/json');
 
   constructor(private Http_clint:HttpClient) { }
 
-  AddBook(data:any):Observable<any>{
-    let API_URL=`${this.REST_API}/add-book`;
+  createNewUser(data:any):Observable<any>{
+    let API_URL=`${this.REST_API}/add-cryptoUsers`;
     return this.Http_clint.post(API_URL,data).pipe(catchError(this.handleError))
   }
 
-  GetAllBooks(){
+  GetAllUers(){
     return this.Http_clint.get(`${this.REST_API}`);
   }
 
-GetBookById(id:any):Observable<any>{
-  let API_URL=`${this.REST_API}/update-book/${id}`;
-  return this.Http_clint.get(API_URL,{headers:this.httpHeaders}).pipe(map((res:any)=>{
+getUser(data:any):Observable<any>{
+  let API_URL=`${this.REST_API}/get-cryptoUsers`;
+  return this.Http_clint.post(API_URL,data).pipe(map((res:any)=>{
     return res || {}
   }),
   catchError(this.handleError))
 }
 
-UpdateBook(id:any,data: any):Observable<any>{
-  let API_URL=`${this.REST_API}/update-book/${id}`;
+UpdateUser(id:any,data: any):Observable<any>{
+  let API_URL=`${this.REST_API}/update-cryptoUsers/${id}`;
   return this.Http_clint.put(API_URL,data,{headers:this.httpHeaders}).pipe(
   catchError(this.handleError)
   )
 }
 
-DeleteBook(id:any):Observable<any>{
-  let API_URL=`${this.REST_API}/delete-book/${id}`;
+Deleteuser(id:any):Observable<any>{
+  let API_URL=`${this.REST_API}/delete-cryptoUsers/${id}`;
   return this.Http_clint.delete(API_URL,{headers:this.httpHeaders}).pipe(
   catchError(this.handleError)
   )

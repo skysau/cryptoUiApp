@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CriptoAppServiceService } from '../service/cripto-app-service.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent {
   myLogInForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private router: Router) {
+  constructor(private formBuilder: FormBuilder,private router: Router,private criptoService:CriptoAppServiceService) {
     this.myLogInForm = this.formBuilder.group({
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -18,8 +19,14 @@ export class LoginPageComponent {
   }
   
   onSubmit(){
-    console.log(this.myLogInForm.value);
-    this.router.navigateByUrl('/dashboard');
+    this.criptoService.getUser(this.myLogInForm.value).subscribe((res)=>{
+      if(res.length >0){
+        this.router.navigateByUrl('/dashboard');
+      }else{
+        alert("Invalid Credentials");
+      }
+    });
+    //this.router.navigateByUrl('/dashboard');
   }
   createAccount(){
     this.router.navigateByUrl('/create');
