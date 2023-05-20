@@ -479,3 +479,26 @@ html {
 .collapse.navbar-collapse{
     margin-left: 40%;
   }
+  .card-deck > .card{
+    width: 20%;
+    margin-left :2%;
+    margin-right :2%;
+    height: 220px;
+    display: inline-flex;
+  }
+  .card-body-package{
+    text-align: center;
+    background-color: rgb(251, 176, 202);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .body-footer{
+    background-color: rgb(157, 209, 254);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .card-table{
+   // bottom: 40px;
+    margin-top: 50px !important;
+    margin-bottom: 90px !important;
+  }

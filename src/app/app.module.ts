@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginPageComponent,
     CreateAccountComponent,
     DashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
