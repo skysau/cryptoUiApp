@@ -11,6 +11,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from './cart/cart.component';
+import { RefralPageComponent } from './refral-page/refral-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CartComponent } from './cart/cart.component';
     CreateAccountComponent,
     DashboardComponent,
     AdminDashboardComponent,
-    CartComponent
+    CartComponent,
+    RefralPageComponent,
+    AboutPageComponent
   ],
   imports: [
     BrowserModule,

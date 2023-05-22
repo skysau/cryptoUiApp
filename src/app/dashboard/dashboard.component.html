@@ -10,48 +10,54 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive" [ngbCollapse]="isCollapsed">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <li class="nav-item"  [ngClass]="{'NavCSSColor' : activeWindow === 'Dashboard'}" data-toggle="tooltip" (click)="onChangeActiveWindow('Dashboard')" data-placement="right" title="Dashboard">
                     <a class="nav-link">
                         <i class="fa fa-fw fa-dashboard"></i>
                         <span class="nav-link-text">Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <li class="nav-item"  [ngClass]="{'NavCSSColor' : activeWindow === 'Profile'}"  data-toggle="tooltip" (click)="onChangeActiveWindow('Profile')" data-placement="right" title="Profile">
+                  <a class="nav-link">
+                      <i class="fa fa-id-badge mr-2"></i>
+                      <span class="nav-link-text ml-2">Profile</span>
+                  </a>
+              </li>
+                <li class="nav-item" [ngClass]="{'NavCSSColor' : activeWindow === 'Packages'}"  data-toggle="tooltip"  (click)="onChangeActiveWindow('Packages')"  data-placement="right" title="Packages">
                     <a class="nav-link">
                         <i class="fa fa-briefcase mr-2"></i>
                         <span class="nav-link-text ml-2">Packages</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Order Histoy">
+                <li class="nav-item" [ngClass]="{'NavCSSColor' : activeWindow === 'Order'}"  data-toggle="tooltip"  (click)="onChangeActiveWindow('Order')"  data-placement="right" title="Order Histoy">
                     <a class="nav-link">
                         <i class="fa fa-fw fa-table"></i>
                         <span class="nav-link-text">Order Histoy</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Royalty Income">
+                <li class="nav-item" [ngClass]="{'NavCSSColor' : activeWindow === 'Royalty'}"  data-toggle="tooltip"  (click)="onChangeActiveWindow('Royalty')"  data-placement="right" title="Royalty Income">
                   <a class="nav-link">
                       <i class="fa fa-credit-card-alt"></i>
                       <span class="nav-link-text">Royalty Income</span>
                   </a>
               </li>
-              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reffral Benefit">
+              <li class="nav-item"  [ngClass]="{'NavCSSColor' : activeWindow === 'Reffral'}" data-toggle="tooltip"  (click)="onChangeActiveWindow('Reffral')"  data-placement="right" title="Reffral Benefit">
                 <a class="nav-link">
                     <i class="fa fa-credit-card"></i>
                     <span class="nav-link-text">Reffral Benefit</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Terms & Conditions">
+            <li class="nav-item" [ngClass]="{'NavCSSColor' : activeWindow === 'Conditions'}"  data-toggle="tooltip"  (click)="onChangeActiveWindow('Conditions')"  data-placement="right" title="Terms & Conditions">
               <a class="nav-link">
                   <i class="fa fa-check-square"></i>
                   <span class="nav-link-text">Terms & Conditions</span>
               </a>
           </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <li class="nav-item" [ngClass]="{'NavCSSColor' : activeWindow === 'About'}"  data-toggle="tooltip"  (click)="onChangeActiveWindow('About')"  data-placement="right" title="About">
                     <a class="nav-link" >
                         <i class="fa fa-fw fa-link"></i>
                         <span class="nav-link-text">About Us</span>
                     </a>
-                </li>
+          </li>
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
@@ -167,8 +173,8 @@
         </div>
     </nav>
     <div class="content-wrapper">
-        <div class="container-fluid">
-<!-- Breadcrumbs=================================================================================================================================  -->
+<!-- ????? Main Dashboard Page Start ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <div *ngIf="(activeWindow === 'Dashboard')" class="container-fluid">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                    <h3> <a >Dashboard</a></h3>
@@ -246,70 +252,91 @@
                     </div>
                 </div>
             </div>
-<!-- ====================================================================================================================================== -->
-      <div>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-           <h3>Package Details :- </h3>
-          </li>
-          <li class="breadcrumb-item "></li>
-      </ol>
-        <div class="row Cart mt-8">
-          <div class="card-deck">
-            <div class="card mt-4" *ngFor="let data of packageData">
-              <img class="card-img-top" src="https://blockworks-co.imgix.net/wp-content/uploads/2023/04/tron-trx-1.jpg"
-                height="120px" width="200px" alt="Card image cap">
-              <div class="card-body-package">
-                <div class="Main-body ">
-                <h5 class="card-title">{{data.pakageName}} </h5>
-                <h6 class="card-text">{{'ROI - '+data.ROI +'%'}}</h6>
-                <h6 class="card-text">{{'Returns - '+data.returns+'x'}}</h6>
-                </div>
-                <div class="body-footer">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                      <i class="fa fa-angle-right"></i>
-                  </span>
-                </div>
-              </div>
+        </div>
+<!-- ????? profile Page Start ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+<!-- ????? package Page Start ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+<div  *ngIf="(activeWindow === 'Packages' || activeWindow === 'Dashboard')" class="container-fluid Package_page">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+       <h3>Package Details :- </h3>
+      </li>
+      <li class="breadcrumb-item "></li>
+  </ol>
+    <div class="row Cart mt-8">
+      <div class="card-deck">
+        <div class="card mt-4" *ngFor="let data of packageData">
+          <img class="card-img-top" src="https://blockworks-co.imgix.net/wp-content/uploads/2023/04/tron-trx-1.jpg"
+            height="120px" width="200px" alt="Card image cap">
+          <div class="card-body-package">
+            <div class="Main-body ">
+            <h5 class="card-title">{{data.pakageName}} </h5>
+            <h6 class="card-text">{{'ROI - '+data.ROI +'%'}}</h6>
+            <h6 class="card-text">{{'Returns - '+data.returns+'x'}}</h6>
+            </div>
+            <div class="body-footer">
+              <span class="float-left">View Details</span>
+              <span class="float-right">
+                  <i class="fa fa-angle-right"></i>
+              </span>
             </div>
           </div>
         </div>
       </div>
-<!-- ====================================================================================================================================== -->
-          
-            <div class="card mb-4 mt-4 card-table">
-                <div class="card-header">
-                  <i class="fa fa-table"></i> Order Details</div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                      <thead>
-                        <tr>
-                          <th>Package Name</th>
-                          <th>No. OOf Pakage</th>
-                          <th>Tron Per Package</th>
-                          <th>Total Tron</th>
-                          <th>Amount</th>
-                          <th>Date Of Purches</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>BASIC</td>
-                          <td>50</td>
-                          <td>4</td>
-                          <td>200</td>
-                          <td>$120,000</td>
-                          <td>2011/04/25</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-              </div>            
-        </div>
+    </div>
+</div>
+<!-- ????? order Histry  start ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+      <div class="Order_page ml-4 mr-4" *ngIf="(activeWindow === 'Order'|| activeWindow === 'Dashboard')" >
+        <div class="card mb-4 mt-4 card-table">
+          <div class="card-header">
+            <i class="fa fa-table"></i> Order Details</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Package Name</th>
+                    <th>No. Of Pakage</th>
+                    <th>Tron Per Package</th>
+                    <th>Total Tron</th>
+                    <th>Amount</th>
+                    <th>Date Of Purches</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>BASIC</td>
+                    <td>4</td>
+                    <td>50</td>
+                    <td>200</td>
+                    <td>$120,000</td>
+                    <td>2011/04/25</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>  
+      </div>
+<!-- ????? Roylity Page Start ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+<div class="Royalty_page" *ngIf="(activeWindow === 'Royalty')">
+    <img src="../../assets/img/roylity.png" width="500px" alt="image">
+  </div>
+<!-- ????? Reffral Page Start ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+<div class="refral_page" *ngIf="(activeWindow === 'Reffral')">
+  <app-refral-page></app-refral-page>
+</div>
+<!-- ????? Condition Page Start ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+<div class="refral_page" *ngIf="(activeWindow === 'Conditions')">
+    <img src="../../assets/img/condition.png" alt="image">
+  </div>
+<!-- ????? about us Page Start ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+<div class="refral_page" *ngIf="(activeWindow === 'About')">
+    <app-about-page></app-about-page>
+  </div>
+  <!-- ????? about us Page Start ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+
         <footer class="sticky-footer mt-4">
             <div class="container">
                 <div class="text-center">

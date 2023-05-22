@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 export class DashboardComponent  implements OnInit{
   isCollapsed = true;
   private URL = '../../assets/pakage.json';
-  packageData:any
+  packageData:any;
+  activeWindow='Dashboard';
+
   constructor(private router:Router, private httpClient:HttpClient){
 
   }
@@ -26,4 +28,9 @@ export class DashboardComponent  implements OnInit{
   collaspse(){
     this.isCollapsed=!this.isCollapsed
   }
+  onChangeActiveWindow(data:string){
+    this.activeWindow=''
+    this.activeWindow =data;
+  }
+  
 }
